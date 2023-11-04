@@ -34,7 +34,7 @@ function crearObjeto() {
   return jugadores;
 }
 /////////////////////////////////////////////////////////////////////////////
-const miArray = crearObjeto(); // guarda el arreglo en la variable
+// const miArray = crearObjeto(); // guarda el arreglo en la variable
 // module.exports = miArray; // exporta el objeto a otro archivo JS
 
 /******pone un etiqueta div y a este le agrega un elemento <audio> para poner un sonido de fondo****/

@@ -183,7 +183,7 @@ function areTheyEqual() {
   if (cardsCollected.length === 2) {
     gameWon = true;
     winMessage();
-    setTimeout(final(), 8000);
+    setTimeout(final(), 2000);
   }
 }
 
