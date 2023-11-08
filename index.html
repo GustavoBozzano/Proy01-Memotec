@@ -6,6 +6,24 @@
     <title>Memotec</title>
     <link rel="stylesheet" href="./css/memotec.css" />
     <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
     <h1 id="brillo">Probaremos cuan rapido eres con tu memoria</h1>
@@ -14,15 +32,11 @@
         <h2 id="destello">Elige tu emoji y recuerda donde estaba...!!</h2>
       </header>
       <div class="containerCenter">
-        <p>¿Cuántas personas jugarán?</p>
-        <br />
-        <label for="nombre"></label>
-        <input type="number" min="1" max="4" id="nombre" />
-        <br />
-        <div id="contenedor-campos"></div>
-        <button id="addGamers">Agregar Jugadores</button>
+        <p>Haz Click Aqui para Comenzar</p>
+        <a href="/playGame.html">
+          <button id="addGamers">COMENZAR</button>
+        </a>
       </div>
-
       <div class="emojis">
         <i
           class="em em-astonished"
@@ -39,7 +53,6 @@
           aria-role="presentation"
           aria-label="FACE THROWING A KISS"
         ></i>
-        <button id="crearObjeto">Comenzar</button>
         <i
           class="em em-partying_face"
           aria-role="presentation"
@@ -61,5 +74,5 @@
   <footer>
     <h3>Proyecto Hackaboos - Fuerza Latina</h3>
   </footer>
-  <script src="./js/memotec.js"></script>
+  <script type="module" src="./js/memotec.js"></script>
 </html>

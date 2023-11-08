@@ -1,9 +1,33 @@
 "use strict";
-/**********************/
-/*SONIDO DE FONDO
-/**********************/
-let soundOk = new Audio("./sonidos/fernanfloo.mp3");
-soundOk.play();
+/*************************************************************
+/*                      SONIDO DE FONDO
+/*************************************************************
+// let soundOk = new Audio("./sonidos/fernanfloo.mp3");
+// soundOk.play();
+/************************************************************* */
+function reproducirAudio() {
+  return new Promise((resolve, reject) => {
+    const soundOk = new Audio("./sonidos/fernanfloo.mp3");
+
+    soundOk.oncanplaythrough = () => {
+      soundOk.play();
+      soundOk.volume -= 0.9;
+      resolve("Reproducción de audio exitosa.");
+    };
+
+    soundOk.onerror = () => {
+      reject("Error al cargar o reproducir el audio.");
+    };
+  });
+}
+
+reproducirAudio()
+  .then((mensaje) => {
+    console.log(mensaje);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 /****************************************/
 /*IMPORTANDO ARRAY DE OTRO .JS
@@ -84,14 +108,14 @@ function game() {
 //*  FUNCION COMIENZA EL JUEGO
 //*********************************/
 
-startBtn.addEventListener("click", function () {
+startBtn?.addEventListener("click", function () {
   this.classList.add("hide-start-btn");
   game();
   timer();
 });
 
 // Cuando el juego se complete, agrega la opción para jugar nuevamente.
-btnReplay.addEventListener("click", replayTheGame);
+btnReplay?.addEventListener("click", replayTheGame);
 // resetButton.addEventListener("click", replayTheGame);
 
 //*********************************/
@@ -180,10 +204,12 @@ function areTheyEqual() {
   // si todas las cartas estan dadas vueltas
   //******************************************************************************/
 
-  if (cardsCollected.length === 2) {
+  if (cardsCollected.length === 16) {
     gameWon = true;
     winMessage();
-    setTimeout(final(), 2000);
+    setTimeout(function () {
+      final();
+    }, 3000);
   }
 }
 
@@ -233,22 +259,21 @@ function notEqual() {
 /**********************************/
 // function mostrar mensaje ganador
 /**********************************/
-function winMessage() {
+async function winMessage() {
   // actualiza todo para mostrar el tiempo e intentos del jugador
-  const movesHolder = movesContainer.innerText;
-  const timerHolder = timerContainer.innerText;
+  const movesHolder = movesContainer?.innerText;
+  const timerHolder = timerContainer?.innerText;
 
   console.log("el tiempo fue: " + timerHolder);
   console.log("los intentos: " + movesHolder);
+  ////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////
+  localStorage.setItem("moves", movesHolder);
+  localStorage.setItem("timer", timerHolder);
 
   // remueve el EventListener del DECK
-  deck.removeEventListener("click", cardClickHandler);
+  deck?.removeEventListener("click", cardClickHandler);
 }
-
-// // function ocultar mensaje de Ganador
-// function hideWin() {
-//   winContainer.classList.remove("win-screen");
-// }
 
 // función para voltear la tarjeta arriba
 function flipUp(element) {
@@ -291,12 +316,12 @@ function enableClick(el) {
 }
 
 function updateUI() {
-  movesContainer.textContent = "Intentos: " + moves;
+  movesContainer.textContent = +moves;
 }
 
 function resetUI() {
   timerContainer.textContent = "0 Min 0 Seg";
-  movesContainer.textContent = "Intentos: " + moves;
+  movesContainer.textContent = +moves;
 }
 
 // función para restablecer las variables que contienen un puntero a un elemento DOM
@@ -345,12 +370,13 @@ function resetGame() {
 /********************************************
  * para dirigirse a la pagina principal
 /*******************************************/
-function volver() {
-  location.href = "/index.html";
+async function volver() {
+  window.location.href = "/index.html";
 }
+window.volver = volver;
 /********************************************
  * para dirigirse a la pagina final
 /*******************************************/
 function final() {
-  location.href = "/final.html";
+  window.location.href = "/FINAL.html";
 }
