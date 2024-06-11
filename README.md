@@ -7,4 +7,4 @@ A DISFRUTAR...!!!!
 
 
 ## 🔗 Link
-[MEMOTEC](https://memotecgusdev.netlify.app)
+[MEMOTEC](https://gusdev-memotec.netlify.app)
